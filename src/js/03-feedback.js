@@ -8,11 +8,20 @@ initialForm();
 form.addEventListener('input', throttle(onInput, 500));
 
 function onInput() {
+    const email = form.elements.email.value;
+    const message = form.elements.message.value;
+
+    const formDataElements = {
+        email,
+        message,
+    };
+    const formData = JSON.stringify(formDataElements);
+    localStorage.setItem(localStorageKey, formData);
     //const formData = new FormData(form);
-    const userForm = {};
+    //const userForm = {};
     //formData.forEach((value, name) => (userForm[name] = value));
-    localStorage.setItem(localStorageKey, JSON.stringify(userForm));
-};
+    //localStorage.setItem(localStorageKey, JSON.stringify(userForm));
+    };
 //сохраняемая форма
 function initialForm() {
     const persistedForm = localStorage.getItem('localStorageKey');
@@ -23,7 +32,7 @@ function initialForm() {
             form.elements[name].value = value;
         })
     }
-}
+};
 //кнопка при отправке
 form.addEventListener('submit', onSubmit);
 function onSubmit(event) {
@@ -34,4 +43,4 @@ function onSubmit(event) {
     formData.forEach((value, name) => (userForm[name] = value));
     console.log(userForm);
     form.reset();
-}
+};
