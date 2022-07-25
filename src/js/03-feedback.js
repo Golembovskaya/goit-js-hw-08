@@ -8,10 +8,10 @@ initialForm();
 form.addEventListener('input', throttle(onInput, 500));
 
 function onInput() {
-    const formData = new FormData(form);
+    //const formData = new FormData(form);
     const userForm = {};
-    formData.forEach((value, name) => (userForm[name] = value));
-    localStorage.setItem = (localStorageKey, JSON.stringify(userForm));
+    //formData.forEach((value, name) => (userForm[name] = value));
+    localStorage.setItem(localStorageKey, JSON.stringify(userForm));
 };
 //сохраняемая форма
 function initialForm() {
